@@ -21,6 +21,13 @@
 ~~~~
 banjo doesn't support middleware and path/url query param, so only 1 API implemented
 
+#### beego
+~~~~
+> cd beego
+> go build
+> ./beego
+~~~~
+
 ## Test with cURL
 ~~~~
 > curl http://127.0.0.1:4321/user/radaiming/followers
