@@ -19,7 +19,9 @@ func getUserFollowers(c echo.Context) error {
 }
 
 func getMyFollowers(c echo.Context) error {
-	followers, err := core.GetFollowers(c.Get("username").(string))
+	// get authorized user from context
+	userName := c.Get("user_name").(string)
+	followers, err := core.GetFollowers(userName)
 	if err != nil {
 		return err
 	} else {
@@ -48,6 +50,7 @@ func auth(next echo.HandlerFunc) echo.HandlerFunc {
 		if err != nil {
 			return err
 		} else {
+			// set authorized user into context
 			c.Set("user_name", userName)
 			return next(c)
 		}
