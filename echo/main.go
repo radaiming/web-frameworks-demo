@@ -35,7 +35,7 @@ func createRepoTag(c echo.Context) error {
 		return err
 	}
 
-	tag, err := core.CreateTag(c.Param("owner"), c.Param("repo"), &req)
+	tag, err := core.CreateTag(c.Get("user_name").(string), c.Param("owner"), c.Param("repo"), &req)
 	if err != nil {
 		return err
 	} else {
